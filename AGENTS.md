@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-ESP32 firmware for a Rheinturm (Rhine Tower) clock replica that displays time using NeoPixel LEDs in BCD format, configurable via Bluetooth Low Energy (BLE). Built with PlatformIO and Arduino framework.
+ESP32 firmware for a Turmi clock replica that displays time using NeoPixel LEDs in BCD format, configurable via Bluetooth Low Energy (BLE). Built with PlatformIO and Arduino framework.
 
-The companion Flutter app ([boxxsack/rheinturm-app](https://github.com/boxxsack/rheinturm-app)) connects to this firmware over BLE to provide WiFi credentials and control LED brightness.
+The companion Flutter app ([turmilab/app](https://github.com/turmilab/app)) connects to this firmware over BLE to provide WiFi credentials and control LED brightness.
 
 ## Build Commands
 
@@ -97,7 +97,7 @@ ConnectivityManager and TimeDisplay have no knowledge of BLE.
 - 41 NeoPixel LEDs on GPIO 5, BCD layout with separators at indices 11 and 26
 - BLE service UUID: `4fafc201-1fb5-459e-8fcc-c5c9c331914b` (the discovery key)
 - Device naming: the local name is stored in NVS (`device` / `name`), defaults to
-  `Rheinturm`, and is exposed through the name/control characteristics documented
+  `Turmi`, and is exposed through the name/control characteristics documented
   in `BLE_PROTOCOL.md`; clients must not treat the name as a stable identifier.
 - BLE security: link encryption + bonding required ("Just Works" pairing, `ESP_LE_AUTH_REQ_SC_BOND`). The SSID, password, otaControl and wifiReset characteristics carry `ESP_GATT_PERM_*_ENCRYPTED` permissions, so a client must pair before provisioning or triggering OTA. See `SECURITY_REVIEW.md`.
 - BLE bond self-heal: `SecurityCallbacks` in `src/BLEConfigInterface.cpp` logs every `ESP_GAP_BLE_AUTH_CMPL_EVT` (peer address + fail reason) and, per `BleAuthFailurePolicy`, removes the ESP32's bond and disconnects on auth failure so the next connect re-pairs. Bluedroid (IDF 4.4) already clears NVS keys on most SMP failures itself; this is an explicit, stack-version-independent layer plus diagnostics. It cannot heal an iOS-side stale key (ESP32 has no bond) - the user must forget the device in iOS Settings. Registering the callbacks must not add `setEncryptionLevel()` (would cause a second pairing dialog).

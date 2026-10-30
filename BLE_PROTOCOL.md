@@ -11,7 +11,7 @@ and must not be treated as a stable device identifier.
 | Device name | `4fafff0d-1fb5-459e-8fcc-c5c9c331914b` | Read, Notify | UTF-8, normalized name |
 | Device name control | `4fafff0e-1fb5-459e-8fcc-c5c9c331914b` | Read, Write, Notify | UTF-8 write; status on read/notify |
 
-The name is stored in NVS (`device` / `name`) and defaults to `Rheinturm` when
+The name is stored in NVS (`device` / `name`) and defaults to `Turmi` when
 missing or invalid. A name write must use the encrypted, bonded link. The
 device trims leading and trailing spaces, accepts 1-20 Unicode code points,
 Latin letters (including German umlauts), ASCII digits, spaces, and hyphens,

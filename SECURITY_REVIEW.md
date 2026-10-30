@@ -1,4 +1,4 @@
-# Security Review — Rheinturm Firmware
+# Security Review - Turmi Firmware
 
 Date: 2026-06-27
 Scope: BLE configuration interface and WiFi OTA update path (`src/BLEConfigInterface.cpp`).

@@ -6,7 +6,7 @@
 
 namespace DeviceNameLogic {
 
-constexpr const char* kDefaultName = "Rheinturm";
+constexpr const char* kDefaultName = "Turmi";
 constexpr size_t kMinCharacters = 1;
 constexpr size_t kMaxCharacters = 20;
 // BLE AD structures reserve one byte for their length and one for their type.
